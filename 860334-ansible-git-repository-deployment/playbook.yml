@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Clone repo
+      git:
+        repo: 'https://github.com/ProblemSetters/devops-inventory.git'
+        dest: /tmp/devops-inventory
+        version: 860334-ansible
+    - name: Set permissions
+      file:
+        path: /tmp/devops-inventory/script.sh
+        mode: '0775'
+    - name: Execute script
+      shell: /tmp/devops-inventory/script.sh
